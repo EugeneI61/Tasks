@@ -5,6 +5,10 @@ namespace ConsoleApp2
 {
     class Program
     {
+        static void Find()
+        {
+
+        }
         static void Main(string[] args)
         {
             string pathLine;
@@ -25,37 +29,75 @@ namespace ConsoleApp2
                     continue;
                 }
             }
-
-            Console.WriteLine("Input a word for find!");
-            findWord = Console.ReadLine();
-
-            string readText = File.ReadAllText(pathLine);
-
-            string[] splitedText = readText.Split(' ');
-
-            int counter = 0;    
-
-            for (int i = 0; i < splitedText.Length; i++)
+            do
             {
-                //Console.WriteLine(splitedText[i]);
-                if(string.Equals(splitedText[i], findWord, StringComparison.CurrentCultureIgnoreCase))
+                Console.WriteLine("Input a word for find!");
+                findWord = Console.ReadLine();
+
+                string readText = File.ReadAllText(pathLine);
+
+                string[] splitedText = readText.Split(' ');
+
+                int wordsCounter = 0;
+
+                for (int i = 0; i < splitedText.Length; i++)
                 {
-                    counter++;
+                    //Console.WriteLine(splitedText[i]);
+                    if (string.Equals(splitedText[i], findWord, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        wordsCounter++;
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
-                else
-                {
-                    continue;
-                }
+                Console.WriteLine("Count: " + wordsCounter);
             }
-            Console.WriteLine("Count: " + counter);
+            while(findWord != null);
 
             //D:\Words.txt
             //sit
 
-            //while (true)
-            //{
-            //    Console.WriteLine("Commands:" + "\n ***********************");
-            //}
+            char choise;
+            do
+            {
+                Console.WriteLine("Commands: " + "\n" + "***********************");
+                Console.WriteLine("f - find word;");
+                Console.WriteLine("r - replace word;");
+                Console.WriteLine("d - delete word;");
+
+                Console.WriteLine("Make a choise!");
+                string smallChoise = Console.ReadLine();
+                if (Char.TryParse(smallChoise, out choise) && (choise == 'r' || choise == 'f' || choise == 'd'))
+                {
+                    Console.WriteLine("Good!");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong symbol!");
+                    continue;
+                }
+            }
+            while (choise != ' ');
+
+
+            switch (choise)
+            {
+                case 'r':
+
+                    break;
+                case 'd':
+
+                    break;
+
+                case 'f':
+
+                    break;
+                default:
+                    Console.WriteLine("RT");
+                    break;
+            }
         }
     }
 }
