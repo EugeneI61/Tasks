@@ -5,34 +5,90 @@ namespace ConsoleApp2
 {
     class Program
     {
-        static void Main(string[] args)
+        public  void Find(string pathLine)
         {
-            string pathLine;
-            while (true)
-            {
-                Console.WriteLine("Input path to file!");
-                pathLine = Console.ReadLine();
+            Console.WriteLine("Input a word for find!");
 
-                if (File.Exists(pathLine))
+            string findWord = Console.ReadLine();
+
+            int wordsCounter = 0;
+
+            for (int i = 0; i < splitedText.Length; i++)
+            {
+                if (String.Equals(splitedText[i], findWord, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    Console.WriteLine("File exists!");
-                    Console.WriteLine();
-                    break;
+                    wordsCounter++;
                 }
                 else
                 {
-                    Console.WriteLine("File does not exist!");
-                    Console.WriteLine();
                     continue;
                 }
             }
-            //D:\Words.txt
+            Console.WriteLine("Count: " + wordsCounter);
+            Console.WriteLine();
+        }
+
+        public static void Delete(string pathLine)
+        {
+            Console.WriteLine("Input a word for Deleting!");
+            string deleteWord = Console.ReadLine();
+            Console.WriteLine();
+
+            //fm.Read(pathLine);
+
+            int deleteCounter = 0;
+
+            char[] separator = new char[] { ' ', '.', ',', '!', '?', '-' };
+
+            string str = string.Empty;
+
+            string[] splitedText = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < splitedText.Length; i++)
+            {
+                if (String.Equals(splitedText[i], deleteWord, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    str = str.Replace(deleteWord, "", StringComparison.CurrentCultureIgnoreCase);
+                    deleteCounter++;
+                }
+            }
+            Console.WriteLine("Was delete: " + deleteCounter);
+            Console.WriteLine();
+        }
+
+        public static void Replace(string pathLine)
+        {
+            Console.WriteLine("Input a word for Replace");
+            string replaceWord = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.WriteLine("Input a word for Write!");
+
+            Console.WriteLine();
+            string writeWord = Console.ReadLine();
+
+            string str = String.Empty;
+            using (StreamReader reader = File.OpenText(pathLine))
+            {
+                str = reader.ReadToEnd();
+            }
+
+            str = str.Replace(replaceWord, writeWord, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        static void Main(string[] args)
+        {
+            FileManager fm = new FileManager(pathLine: "");
             
+            fm.Check();
+
+            string s = fm.str;
+
+            //D:\Words.txt
+
             char choise;
             do
             {
-                FileManager fm = new FileManager(pathLine);
-
                 Console.WriteLine("Commands: " + "\n" + "***********************");
                 Console.WriteLine("f - find word;");
                 Console.WriteLine("r - replace word;");
@@ -43,7 +99,6 @@ namespace ConsoleApp2
                 Console.WriteLine();
                 string smallChoise = Console.ReadLine();
 
-                
                 if (Char.TryParse(smallChoise, out choise) && (choise == 'r' || choise == 'f' || choise == 'd'))
                 {
                     Console.WriteLine("Good!");
@@ -56,13 +111,13 @@ namespace ConsoleApp2
                 switch (choise)
                 {
                     case 'r':
-                        FileManager.Replace(fm.PathLine);
+                        Replace(fm.PathLine);
                         break;
                     case 'd':
-                        FileManager.Delete(fm.PathLine);
+                        Delete(fm.PathLine);
                         break;
                     case 'f':
-                        FileManager.Find(fm.PathLine);
+                        //Find(fm.PathLine);
                         break;
                     default:
                         Console.WriteLine("RT");
