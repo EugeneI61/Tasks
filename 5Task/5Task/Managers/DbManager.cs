@@ -12,7 +12,7 @@ namespace _5Task.Managers
         EmployeeContext db = new EmployeeContext();
         public void Add(string name, int age, string car)
         {
-            Employee emp = new Employee { EmployeeName = name, Age = age, Car = car};
+            Employee emp = new Employee { EmployeeName = name, Age = age, Car = car };
             db.Employees.Add(emp);
             db.SaveChanges();
 

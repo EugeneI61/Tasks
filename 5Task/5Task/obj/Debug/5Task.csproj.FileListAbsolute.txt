@@ -14,3 +14,17 @@ D:\Projects\5Task\5Task\bin\Debug\EntityFramework.SqlServer.dll
 D:\Projects\5Task\5Task\bin\Debug\EntityFramework.xml
 D:\Projects\5Task\5Task\bin\Debug\EntityFramework.SqlServer.xml
 D:\Projects\5Task\5Task\obj\Debug\5Task.csproj.CopyComplete
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\bin\Debug\5Task.exe.config
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\bin\Debug\5Task.exe
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\bin\Debug\5Task.pdb
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\obj\Debug\5Task.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\obj\Debug\_5Task.Form1.resources
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\obj\Debug\_5Task.Properties.Resources.resources
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\obj\Debug\5Task.csproj.GenerateResource.cache
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\obj\Debug\5Task.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\obj\Debug\5Task.exe
+C:\Users\User\Desktop\Tasks-main\5Task\5Task\obj\Debug\5Task.pdb

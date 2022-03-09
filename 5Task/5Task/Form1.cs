@@ -1,7 +1,5 @@
 ﻿using _5Task.Managers;
 using _5Task.Models;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace _5Task
@@ -14,16 +12,15 @@ namespace _5Task
 
             comboBox1.DataSource = Cars.GetValues(typeof(Cars));
         }
-        DbManager manager = new DbManager();
 
-        
-        private void button4_Click(object sender, System.EventArgs e)
+        DbManager manager = new DbManager();
+        private void ViewClick(object sender, System.EventArgs e)
         {
             dataGridView1.Rows.Clear();
             manager.LoadData(dataGridView1);
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        private void SaveButton(object sender, System.EventArgs e)
         {
             string name = textBox1.Text;
 
@@ -39,21 +36,34 @@ namespace _5Task
             }
         }
 
-        private void button2_Click(object sender, System.EventArgs e)
+        private void DeleteClick(object sender, System.EventArgs e)
         {
-            dataGridView1.Rows.Clear();
             string delete = textBox4.Text;
-            manager.Delete(delete);
+
+            if (int.TryParse(delete, out int result))
+            {
+                MessageBox.Show("Input name of Employee!");
+            }
+            else
+            {
+                dataGridView1.Rows.Clear();
+                manager.Delete(delete);
+            }
+
         }
 
-        private void button3_Click(object sender, System.EventArgs e)
+        private void FindButton(object sender, System.EventArgs e)
         {
             dataGridView1.Rows.Clear();
             string result = textBox3.Text;
-            if(int.TryParse(result, out int find))
+            if (int.TryParse(result, out int find))
             {
                 manager.Find(find, dataGridView1);
-            }    
+            }
+            else
+            {
+                MessageBox.Show("Input Id of Employee!");
+            }
         }
     }
 }

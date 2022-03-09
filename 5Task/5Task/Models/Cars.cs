@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace _5Task.Models
 {
-    enum Cars { BMW = 1, Skoda, Toyota, Mazda, Volkswagen }
+    enum Cars { Bmw = 1, Skoda, Toyota, Mazda, Volkswagen }
 }
