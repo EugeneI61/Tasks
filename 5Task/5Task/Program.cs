@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace _5Task
+namespace Task5
 {
     internal static class Program
     {

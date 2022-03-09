@@ -1,11 +1,11 @@
-﻿using _5Task.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using Task5.Models;
 
-namespace _5Task.Managers
+namespace Task5.Managers
 {
     public class DbManager
     {

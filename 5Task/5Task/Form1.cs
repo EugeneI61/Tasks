@@ -1,8 +1,8 @@
-﻿using _5Task.Managers;
-using _5Task.Models;
+﻿using Task5.Managers;
+using Task5.Models;
 using System.Windows.Forms;
 
-namespace _5Task
+namespace Task5
 {
     public partial class Form1 : Form
     {

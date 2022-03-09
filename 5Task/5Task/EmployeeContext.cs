@@ -1,9 +1,9 @@
-﻿using _5Task.Models;
+﻿using Task5.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace _5Task
+namespace Task5
 {
     public class EmployeeContext : DbContext
     {

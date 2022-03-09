@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _5Task
+namespace Task5
 {
     partial class Form1
     {
