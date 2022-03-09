@@ -1,0 +1,16 @@
+D:\Projects\5Task\5Task\bin\Debug\5Task.exe.config
+D:\Projects\5Task\5Task\bin\Debug\5Task.exe
+D:\Projects\5Task\5Task\bin\Debug\5Task.pdb
+D:\Projects\5Task\5Task\obj\Debug\5Task.csproj.AssemblyReference.cache
+D:\Projects\5Task\5Task\obj\Debug\5Task.csproj.SuggestedBindingRedirects.cache
+D:\Projects\5Task\5Task\obj\Debug\_5Task.Properties.Resources.resources
+D:\Projects\5Task\5Task\obj\Debug\5Task.csproj.GenerateResource.cache
+D:\Projects\5Task\5Task\obj\Debug\5Task.csproj.CoreCompileInputs.cache
+D:\Projects\5Task\5Task\obj\Debug\5Task.exe
+D:\Projects\5Task\5Task\obj\Debug\5Task.pdb
+D:\Projects\5Task\5Task\obj\Debug\_5Task.Form1.resources
+D:\Projects\5Task\5Task\bin\Debug\EntityFramework.dll
+D:\Projects\5Task\5Task\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\5Task\5Task\bin\Debug\EntityFramework.xml
+D:\Projects\5Task\5Task\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\5Task\5Task\obj\Debug\5Task.csproj.CopyComplete
