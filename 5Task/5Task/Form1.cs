@@ -1,6 +1,7 @@
-﻿using Task5.Managers;
-using Task5.Models;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using Task5.Managers;
+using Task5.Models;
 
 namespace Task5
 {
@@ -38,31 +39,34 @@ namespace Task5
 
         private void DeleteClick(object sender, System.EventArgs e)
         {
+            dataGridView1.Rows.Clear();
             string delete = textBox4.Text;
 
             if (int.TryParse(delete, out int result))
             {
-                MessageBox.Show("Input name of Employee!");
+                MessageBox.Show("Input Name of Employee!");
             }
             else
             {
-                dataGridView1.Rows.Clear();
-                manager.Delete(delete);
+               
             }
-
         }
 
         private void FindButton(object sender, System.EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            string result = textBox3.Text;
-            if (int.TryParse(result, out int find))
+            string find = textBox3.Text;
+
+            if (find != null)
             {
-                manager.Find(find, dataGridView1);
+                dataGridView1.Rows.Clear();
+                Employee resultFind = manager.Find(find);
+
+                resultFind.ToString();
             }
             else
             {
-                MessageBox.Show("Input Id of Employee!");
+                MessageBox.Show("Input Name of Employee!");
             }
         }
     }

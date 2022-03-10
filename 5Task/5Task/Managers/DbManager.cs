@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,50 +16,15 @@ namespace Task5.Managers
             Employee emp = new Employee { EmployeeName = name, Age = age, Car = car };
             db.Employees.Add(emp);
             db.SaveChanges();
+            db.Entry(emp).State = EntityState.Detached;
 
             MessageBox.Show("New Employee add!");
         }
-        public void Find(int find, DataGridView dataGridView1)
+        public List<String> Find(string find)
         {
-            string connectString = "data source=(localdb)\\MSSQLLocalDB;Initial Catalog=employeesdb;Integrated Security=True";
+            var emp = db.Employees.Include(m => m.EmployeeName == find).ToList();
 
-            SqlConnection myConnection = new SqlConnection(connectString);
-
-            myConnection.Open();
-
-
-            string query = "SELECT * FROM Employees WHERE EmployeeId = @id";
-
-            SqlCommand command = new SqlCommand(query, myConnection);
-
-            SqlParameter parameter = new SqlParameter("@id", find);
-
-            parameter.SqlDbType = SqlDbType.Int;
-
-            parameter.Value = find;
-
-            command.Parameters.Add(parameter);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<string[]> data = new List<string[]>();
-
-            while (reader.Read())
-            {
-                data.Add(new string[4]);
-
-                data[data.Count - 1][0] = reader[0].ToString();
-                data[data.Count - 1][1] = reader[1].ToString();
-                data[data.Count - 1][2] = reader[2].ToString();
-                data[data.Count - 1][3] = reader[3].ToString();
-            }
-
-            reader.Close();
-
-            myConnection.Close();
-
-            foreach (string[] text in data)
-                dataGridView1.Rows.Add(text);
+            return emp;
         }
         public void Delete(string delete)
         {
@@ -72,7 +38,7 @@ namespace Task5.Managers
             }
             catch
             {
-                MessageBox.Show("Input name for Deleting!");
+                MessageBox.Show("Incorrect Input");
             }
         }
         public void LoadData(DataGridView dataGridView1)

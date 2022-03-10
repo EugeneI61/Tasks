@@ -1,7 +1,5 @@
-﻿using Task5.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using Task5.Models;
 
 namespace Task5
 {
