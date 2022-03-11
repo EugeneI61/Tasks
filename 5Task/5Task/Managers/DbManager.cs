@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using Task5.Models;
@@ -10,7 +11,7 @@ namespace Task5.Managers
         EmployeeContext db = new EmployeeContext();
         public void Add(int id, string name, int age, string car)
         {
-            Employee emp = new Employee { Id = id, Name = name, Age = age, Car = car };
+            Employee emp = new Employee { Id = id, Name = name, Age = age, Car =  (Cars)Enum.Parse(typeof(Cars), car) };
             db.Employees.Add(emp);
             db.SaveChanges();
             db.Entry(emp).State = EntityState.Detached;

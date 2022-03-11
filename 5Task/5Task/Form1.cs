@@ -1,4 +1,5 @@
 ﻿using _5Task;
+using System;
 using System.Windows.Forms;
 using Task5.Managers;
 using Task5.Models;
@@ -8,7 +9,8 @@ namespace Task5
     public partial class Form1 : Form
     {
         DbManager manager = new DbManager();
-        Bl bl = new Bl();
+
+        Blank bl = new Blank();
 
         public Form1()
         {
@@ -105,7 +107,6 @@ namespace Task5
             {
                 dataGridView1.Rows.Add(emp.Id, emp.Name, emp.Age, emp.Car);
             }
-
         }
     }
 }

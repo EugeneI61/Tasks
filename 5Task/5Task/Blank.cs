@@ -2,7 +2,7 @@
 
 namespace _5Task
 {
-    class Bl
+    class Blank
     {
         public bool IsNumber(string input)
         {
