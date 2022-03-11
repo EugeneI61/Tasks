@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.SqlClient;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using Task5.Models;
@@ -10,27 +8,26 @@ namespace Task5.Managers
     public class DbManager
     {
         EmployeeContext db = new EmployeeContext();
-        public void Add(string name, int age, string car)
+        public void Add(int id, string name, int age, string car)
         {
-            Employee emp = new Employee { EmployeeName = name, Age = age, Car = car };
+            Employee emp = new Employee { Id = id, Name = name, Age = age, Car = car };
             db.Employees.Add(emp);
             db.SaveChanges();
             db.Entry(emp).State = EntityState.Detached;
 
             MessageBox.Show("New Employee add!");
         }
-        public Employee Find(string find)
+        public Employee Find(int find)
         {
             Employee emp = null;
-        
-            if (find == null)
-            {
-                MessageBox.Show("Incorrect Input");
 
+            if (find != null)
+            {
+                emp = db.Employees.Find(find);
             }
             else
             {
-                emp = db.Employees.Find(find);
+                MessageBox.Show("Incorrect Input");
             }
             return emp;
         }
@@ -38,7 +35,7 @@ namespace Task5.Managers
         {
             try
             {
-                var deleteEmployee = db.Employees.Where(emp => emp.EmployeeName == delete).FirstOrDefault();
+                var deleteEmployee = db.Employees.Where(emp => emp.Name == delete).FirstOrDefault();
                 db.Employees.Remove(deleteEmployee);
                 db.SaveChanges();
 

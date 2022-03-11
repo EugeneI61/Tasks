@@ -1,12 +1,14 @@
-﻿using System.Data.Entity;
-using Task5.Models;
+﻿using _5Task.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 
-namespace Task5
+namespace _5Task
 {
     public class EmployeeContext : DbContext
     {
         public EmployeeContext() :
-            base("EmployeeDB")
+            base("EmployeesDB")
         { }
         public DbSet<Employee> Employees { get; set; }
     }
