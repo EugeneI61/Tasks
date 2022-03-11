@@ -49,41 +49,5 @@ namespace Task5.Managers
                 MessageBox.Show("Incorrect Input");
             }
         }
-        public void LoadData(DataGridView dataGridView1)
-        {
-            string connectString = "data source=(localdb)\\MSSQLLocalDB;Initial Catalog=employeesdb;Integrated Security=True";
-
-            SqlConnection myConnection = new SqlConnection(connectString);
-
-            myConnection.Open();
-
-            string query = "SELECT * FROM Employees ORDER BY EmployeeId";
-
-            SqlCommand command = new SqlCommand(query, myConnection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<string[]> data = new List<string[]>();
-
-            while (reader.Read())
-            {
-                data.Add(new string[4]);
-
-                data[data.Count - 1][0] = reader[0].ToString();
-                data[data.Count - 1][1] = reader[1].ToString();
-                data[data.Count - 1][2] = reader[2].ToString();
-                data[data.Count - 1][3] = reader[3].ToString();
-            }
-
-            reader.Close();
-
-            myConnection.Close();
-
-            foreach (string[] text in data)
-                dataGridView1.Rows.Add(text);
-
-
-
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Data.Entity;
+using System.Windows.Forms;
 using Task5.Managers;
 using Task5.Models;
 
@@ -6,23 +7,14 @@ namespace Task5
 {
     public partial class Form1 : Form
     {
+        DbManager manager = new DbManager();
+
         public Form1()
         {
             InitializeComponent();
 
             comboBox1.DataSource = Cars.GetValues(typeof(Cars));
-
-
-            //dataGridView1.DataSource =
-        }
-
-        DbManager manager = new DbManager();
-        private void ViewClick(object sender, System.EventArgs e)
-        {
-            dataGridView1.Rows.Clear();
-            manager.LoadData(dataGridView1);
-        }
-
+        }       
         private void SaveButton(object sender, System.EventArgs e)
         {
             string name = textBox1.Text;
@@ -69,6 +61,18 @@ namespace Task5
             {
                 MessageBox.Show("Input Name of Employee!");
             }
+        }
+
+        private void button4_Click(object sender, System.EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            EmployeeContext db = new EmployeeContext();
+
+            foreach (Employee emp in db.Employees)
+            {
+                dataGridView1.Rows.Add(0, emp.EmployeeName, emp.Age, emp.Car);
+            }
+
         }
     }
 }
