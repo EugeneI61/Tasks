@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
@@ -20,10 +19,19 @@ namespace Task5.Managers
 
             MessageBox.Show("New Employee add!");
         }
-        public List<String> Find(string find)
+        public Employee Find(string find)
         {
-            var emp = db.Employees.Include(m => m.EmployeeName == find).ToList();
+            Employee emp = null;
+        
+            if (find == null)
+            {
+                MessageBox.Show("Incorrect Input");
 
+            }
+            else
+            {
+                emp = db.Employees.Find(find);
+            }
             return emp;
         }
         public void Delete(string delete)
@@ -73,6 +81,9 @@ namespace Task5.Managers
 
             foreach (string[] text in data)
                 dataGridView1.Rows.Add(text);
+
+
+
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Task5.Managers;
 using Task5.Models;
 
@@ -12,6 +11,9 @@ namespace Task5
             InitializeComponent();
 
             comboBox1.DataSource = Cars.GetValues(typeof(Cars));
+
+
+            //dataGridView1.DataSource =
         }
 
         DbManager manager = new DbManager();
@@ -48,7 +50,7 @@ namespace Task5
             }
             else
             {
-               
+                manager.Delete(delete);
             }
         }
 
@@ -59,10 +61,9 @@ namespace Task5
 
             if (find != null)
             {
-                dataGridView1.Rows.Clear();
                 Employee resultFind = manager.Find(find);
 
-                resultFind.ToString();
+                dataGridView1.Rows.Add(0, resultFind.EmployeeName, resultFind.Age, resultFind.Car);
             }
             else
             {
