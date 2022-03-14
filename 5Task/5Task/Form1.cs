@@ -23,7 +23,7 @@ namespace Task5
             {
                 string name = textBox1.Text;
 
-                if (bl.IsNumber(name) == false)
+                if (bl.IsNumber(name) == false && name != "")
                 {
                     string resultAge = textBox2.Text;
 
@@ -46,13 +46,13 @@ namespace Task5
                 {
                     MessageBox.Show("Incorrect Name!");
                 }
-        }
+            }
             catch
             {
                 MessageBox.Show("Fill the form!");
             }
 
-}
+        }
 
         private void DeleteClick(object sender, System.EventArgs e)
         {
