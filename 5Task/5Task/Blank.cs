@@ -13,7 +13,6 @@ namespace _5Task
             }
             return false;
         }
-
         public bool AgeAccept(int age)
         {
             if (age >= 18 && age <= 99)
@@ -22,7 +21,6 @@ namespace _5Task
             }
             return false;
         }
-
         public bool IsNull(object number)
         {
             if (number == null)

@@ -1,5 +1,4 @@
 ﻿using _5Task;
-using System;
 using System.Windows.Forms;
 using Task5.Managers;
 using Task5.Models;
@@ -36,7 +35,7 @@ namespace Task5
 
                     if (int.TryParse(resultAge, out int age) && bl.AgeAccept(age))
                     {
-                        manager.Add(id, name, age, car);
+                        manager.Add(id, name, age, cars);
                     }
                     else
                     {
@@ -47,13 +46,13 @@ namespace Task5
                 {
                     MessageBox.Show("Incorrect Name!");
                 }
-            }
+        }
             catch
             {
                 MessageBox.Show("Fill the form!");
             }
 
-        }
+}
 
         private void DeleteClick(object sender, System.EventArgs e)
         {
@@ -102,6 +101,8 @@ namespace Task5
         {
             dataGridView1.Rows.Clear();
             EmployeeContext db = new EmployeeContext();
+
+            Employee employee = new Employee();
 
             foreach (Employee emp in db.Employees)
             {

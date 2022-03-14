@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Windows.Forms;
 using Task5.Models;
@@ -9,9 +10,9 @@ namespace Task5.Managers
     public class DbManager
     {
         EmployeeContext db = new EmployeeContext();
-        public void Add(int id, string name, int age, string car)
+        public void Add(int id, string name, int age, Cars cars)
         {
-            Employee emp = new Employee { Id = id, Name = name, Age = age, Car =  (Cars)Enum.Parse(typeof(Cars), car) };
+            Employee emp = new Employee { Id = id, Name = name, Age = age, Car = cars};
             db.Employees.Add(emp);
             db.SaveChanges();
             db.Entry(emp).State = EntityState.Detached;
@@ -46,6 +47,10 @@ namespace Task5.Managers
             {
                 MessageBox.Show("Incorrect Input");
             }
+        }
+        public void View(Employee employee)
+        {
+
         }
     }
 }
