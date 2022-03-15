@@ -1,10 +1,10 @@
 ﻿using System.Windows.Forms;
 
-namespace Task6.Managers
+namespace Task6
 {
     public class RowComparer : System.Collections.IComparer
     {
-        private static int sortOrderModifier = 1;
+        public static int sortOrderModifier = 1;
 
         public RowComparer(SortOrder sortOrder)
         {

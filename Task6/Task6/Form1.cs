@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Task6.Managers;
 using Task6.Models;
@@ -14,29 +9,30 @@ namespace Task6
 {
     public partial class Form1 : Form
     {
-        DbManager manager = new DbManager();
+        EmployeeContext db = new EmployeeContext();
 
         Blank bl = new Blank();
+        DbManager manager = new DbManager();
 
         public Form1()
         {
             InitializeComponent();
 
-            comboBox1.DataSource = Cars.GetValues(typeof(Cars));
+            comboBox1.DataSource = Enum.GetValues(typeof(Cars));
+            comboBox2.DataSource = Enum.GetValues(typeof(Cars));
         }
+
         private void SaveButton(object sender, System.EventArgs e)
         {
             try
             {
                 string name = textBox1.Text;
 
-                if (bl.IsNumber(name) == false && name != "")
+                if (name != "")
                 {
                     string resultAge = textBox2.Text;
 
                     Cars cars = (Cars)comboBox1.SelectedItem;
-
-                    string car = cars.ToString();
 
                     int id = 1;
 
@@ -63,7 +59,6 @@ namespace Task6
 
         private void DeleteClick(object sender, System.EventArgs e)
         {
-            dataGridView1.Rows.Clear();
             string delete = textBox4.Text;
 
             if (int.TryParse(delete, out int result))
@@ -78,55 +73,39 @@ namespace Task6
 
         private void FindButton(object sender, System.EventArgs e)
         {
-            dataGridView1.Rows.Clear();
-
-            string find = textBox3.Text;
-
-            try
+            string text = textBox3.Text;
+            if (Int32.TryParse(text, out int idResult))
             {
-                if (int.TryParse(find, out int findResult))
-                {
-                    Employee resultFind = manager.Find(findResult);
-                    if (bl.IsNull(resultFind) == false)
-                    {
-                        dataGridView1.Rows.Add(resultFind.Id, resultFind.Name, resultFind.Age, resultFind.Car);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Incorrect Input! Input Id of Employee!");
-                }
+                dataGridView1.DataSource = db.Employees.Where(x => x.Id == idResult).ToList();
             }
-            catch
-            {
-                MessageBox.Show("Incorrect Input!");
-            }
-
         }
 
         private void ViewClick(object sender, System.EventArgs e)
         {
-            dataGridView1.Rows.Clear();
-            EmployeeContext db = new EmployeeContext();
-
-            Employee employee = new Employee();
-
-            foreach (Employee emp in db.Employees)
-            {
-                dataGridView1.Rows.Add(emp.Id, emp.Name, emp.Age, emp.Car);
-            }
+            dataGridView1.DataSource = db.Employees.ToList();
         }
 
         private void SortClick(object sender, EventArgs e)
         {
-            if (radioButton1.Checked == true)
+            if (radioButton1.Checked)
             {
                 dataGridView1.Sort(new RowComparer(SortOrder.Ascending));
             }
-            else if (radioButton2.Checked == true)
+            else if (radioButton2.Checked)
             {
                 dataGridView1.Sort(new RowComparer(SortOrder.Descending));
             }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+            dataGridView1.DataSource = db.Employees.Where(x => x.Name.Contains(textBox5.Text)).ToList();
+        }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Cars cars = (Cars)comboBox2.SelectedItem;
+            dataGridView1.DataSource = db.Employees.Where(x => x.Car == cars).ToList();
         }
     }
 }

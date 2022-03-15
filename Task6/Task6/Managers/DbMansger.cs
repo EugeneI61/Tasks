@@ -19,23 +19,21 @@ namespace Task6.Managers
 
             MessageBox.Show("New Employee add!");
         }
+        //public Employee Find(int find)
+        //{
+        //    Employee emp = null;
 
-        public Employee Find(int find)
-        {
-            Employee emp = null;
+        //    if (find != null)
+        //    {
+        //        emp = db.Employees.Find(find);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Incorrect Input");
+        //    }
 
-            if (find != null)
-            {
-                emp = db.Employees.Find(find);
-            }
-            else
-            {
-                MessageBox.Show("Incorrect Input");
-            }
-
-            return emp;
-        }
-
+        //    return emp;
+        //}
         public void Delete(string delete)
         {
             try
@@ -50,11 +48,6 @@ namespace Task6.Managers
             {
                 MessageBox.Show("Incorrect Input");
             }
-        }
-
-        public void View(Employee employee)
-        {
-
         }
     }
 }
