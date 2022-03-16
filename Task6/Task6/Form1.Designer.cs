@@ -94,7 +94,7 @@ namespace Task6
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(602, 167);
+            this.dataGridView1.Size = new System.Drawing.Size(554, 167);
             this.dataGridView1.TabIndex = 3;
             // 
             // label1
@@ -181,7 +181,7 @@ namespace Task6
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(814, 216);
+            this.button5.Location = new System.Drawing.Point(765, 217);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(99, 23);
             this.button5.TabIndex = 15;
@@ -201,7 +201,7 @@ namespace Task6
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(863, 185);
+            this.radioButton1.Location = new System.Drawing.Point(764, 185);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(50, 19);
             this.radioButton1.TabIndex = 18;
@@ -212,7 +212,7 @@ namespace Task6
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(813, 185);
+            this.radioButton2.Location = new System.Drawing.Point(820, 185);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(44, 19);
             this.radioButton2.TabIndex = 19;
@@ -233,7 +233,7 @@ namespace Task6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 252);
+            this.ClientSize = new System.Drawing.Size(871, 252);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);

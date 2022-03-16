@@ -1,6 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using Task6.Managers;
 using Task6.Models;
@@ -17,15 +20,22 @@ namespace Task6
         public Form1()
         {
             InitializeComponent();
-
             comboBox1.DataSource = Enum.GetValues(typeof(Cars));
             comboBox2.DataSource = Enum.GetValues(typeof(Cars));
         }
 
+        public string GetHash(string input)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            return Convert.ToBase64String(hash);
+        }
         private void SaveButton(object sender, System.EventArgs e)
         {
             try
             {
+                string recordId;
                 string name = textBox1.Text;
 
                 if (name != "")
@@ -38,7 +48,9 @@ namespace Task6
 
                     if (int.TryParse(resultAge, out int age) && bl.AgeAccept(age))
                     {
-                        manager.Add(id, name, age, cars);
+                        recordId = string.Concat(id.ToString(), name, age.ToString(), cars.ToString());
+
+                        manager.Add(id, name, age, cars, GetHash(recordId));
                     }
                     else
                     {
@@ -89,14 +101,22 @@ namespace Task6
         {
             if (radioButton1.Checked)
             {
-                dataGridView1.Sort(new RowComparer(SortOrder.Ascending));
+                var employee = db.Employees
+                    .Select(p => new {Name = p.Name, Age = p.Age, Car = p.Car, Id = p.Id, p.RecordId})
+                    .OrderByDescending(p => p.Name);
+                
+                dataGridView1.DataSource = employee.ToList();
             }
             else if (radioButton2.Checked)
             {
-                dataGridView1.Sort(new RowComparer(SortOrder.Descending));
+
+                var employee = db.Employees
+                    .Select(p => new {Name = p.Name, Age = p.Age, Car = p.Car, Id = p.Id, p.RecordId})
+                    .OrderBy(p => p.Name);
+
+                dataGridView1.DataSource = employee.ToList();
             }
         }
-
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 

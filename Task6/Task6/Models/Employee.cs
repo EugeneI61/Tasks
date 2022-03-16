@@ -12,6 +12,7 @@ namespace Task6.Models
         public int Age { get; set; }
         public Cars Car { get; set; }
         public int Id { get; set; }
+        public string RecordId { get; set; }
 
     }
 }
