@@ -13,6 +13,5 @@ namespace Task6.Models
         public Cars Car { get; set; }
         public int Id { get; set; }
         public string RecordId { get; set; }
-
     }
 }

@@ -26,3 +26,10 @@ D:\Tasks\Tasks\Task6\Task6\obj\Debug\net5.0-windows\ref\Task6.dll
 D:\Tasks\Tasks\Task6\Task6\obj\Debug\net5.0-windows\Task6.pdb
 D:\Tasks\Tasks\Task6\Task6\obj\Debug\net5.0-windows\Task6.genruntimeconfig.cache
 D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Task6.dll.config
+D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Microsoft.Data.Tools.Schema.Sql.dll
+D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll
+D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll
+D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Microsoft.Data.Tools.Utilities.dll
+D:\Tasks\Tasks\Task6\Task6\bin\Debug\net5.0-windows\Microsoft.SqlServer.TransactSql.ScriptDom.dll

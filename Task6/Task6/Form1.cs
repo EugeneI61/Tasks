@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
@@ -12,11 +11,7 @@ namespace Task6
 {
     public partial class Form1 : Form
     {
-        EmployeeContext db = new EmployeeContext();
-
-        Blank bl = new Blank();
-        DbManager manager = new DbManager();
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -35,22 +30,34 @@ namespace Task6
         {
             try
             {
-                string recordId;
                 string name = textBox1.Text;
 
                 if (name != "")
                 {
-                    string resultAge = textBox2.Text;
+                    var resultAge = textBox2.Text;
 
-                    Cars cars = (Cars)comboBox1.SelectedItem;
+                    var cars = (Cars)comboBox1.SelectedItem;
 
-                    int id = 1;
+                    var id = 1;
 
-                    if (int.TryParse(resultAge, out int age) && bl.AgeAccept(age))
+                    InputCheck bl = new InputCheck();
+
+                    if (int.TryParse(resultAge, out var age) && bl.AgeAccept(age))
                     {
-                        recordId = string.Concat(id.ToString(), name, age.ToString(), cars.ToString());
+                        var recordId = string.Concat(id.ToString(), name, age.ToString(), cars.ToString());
 
-                        manager.Add(id, name, age, cars, GetHash(recordId));
+                        DbManager manager = new DbManager();
+
+                        Config config = new Config();
+
+                        if (config.Check())
+                        {
+                            manager.Add(id, name, age, cars, GetHash(recordId));
+                        }
+                        else
+                        {
+                            manager.RegectAdd();
+                        }
                     }
                     else
                     {
@@ -66,14 +73,13 @@ namespace Task6
             {
                 MessageBox.Show("Fill the form!");
             }
-
         }
-
         private void DeleteClick(object sender, System.EventArgs e)
         {
-            string delete = textBox4.Text;
+            var delete = textBox4.Text;
+            DbManager manager = new DbManager();
 
-            if (int.TryParse(delete, out int result))
+            if (int.TryParse(delete, out var result))
             {
                 MessageBox.Show("Input Name of Employee!");
             }
@@ -85,8 +91,9 @@ namespace Task6
 
         private void FindButton(object sender, System.EventArgs e)
         {
-            string text = textBox3.Text;
-            if (Int32.TryParse(text, out int idResult))
+            EmployeeContext db = new EmployeeContext();
+            var text = textBox3.Text;
+            if (int.TryParse(text, out var idResult))
             {
                 dataGridView1.DataSource = db.Employees.Where(x => x.Id == idResult).ToList();
             }
@@ -94,36 +101,39 @@ namespace Task6
 
         private void ViewClick(object sender, System.EventArgs e)
         {
+            EmployeeContext db = new EmployeeContext();
             dataGridView1.DataSource = db.Employees.ToList();
         }
 
         private void SortClick(object sender, EventArgs e)
         {
+            EmployeeContext db = new EmployeeContext();
             if (radioButton1.Checked)
             {
                 var employee = db.Employees
-                    .Select(p => new {Name = p.Name, Age = p.Age, Car = p.Car, Id = p.Id, p.RecordId})
+                    .Select(p => new { p.Name, p.Age, p.Car, p.Id, p.RecordId })
                     .OrderByDescending(p => p.Name);
-                
+
                 dataGridView1.DataSource = employee.ToList();
             }
             else if (radioButton2.Checked)
             {
 
                 var employee = db.Employees
-                    .Select(p => new {Name = p.Name, Age = p.Age, Car = p.Car, Id = p.Id, p.RecordId})
+                    .Select(p => new { p.Name, p.Age, p.Car, p.Id, p.RecordId })
                     .OrderBy(p => p.Name);
 
                 dataGridView1.DataSource = employee.ToList();
             }
         }
-        private void textBox5_TextChanged(object sender, EventArgs e)
+        private void Filtre(object sender, EventArgs e)
         {
-
+            EmployeeContext db = new EmployeeContext();
             dataGridView1.DataSource = db.Employees.Where(x => x.Name.Contains(textBox5.Text)).ToList();
         }
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void CarSelected(object sender, EventArgs e)
         {
+            EmployeeContext db = new EmployeeContext();
             Cars cars = (Cars)comboBox2.SelectedItem;
             dataGridView1.DataSource = db.Employees.Where(x => x.Car == cars).ToList();
         }

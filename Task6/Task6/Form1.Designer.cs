@@ -196,7 +196,7 @@ namespace Task6
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(121, 23);
             this.textBox5.TabIndex = 16;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.textBox5.TextChanged += new System.EventHandler(this.Filtre);
             // 
             // radioButton1
             // 
@@ -227,7 +227,7 @@ namespace Task6
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 23);
             this.comboBox2.TabIndex = 20;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.CarSelected);
             // 
             // Form1
             // 
