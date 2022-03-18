@@ -10,11 +10,11 @@ namespace Task6
             EmployeeContext db = new EmployeeContext();
             var count = db.Employees.Count();
 
-            if (count > 4)
-            {
-                return false;
-            }
-            return true;
+            bool result;
+
+            result = count < 5 ? true : false;
+
+            return result;
         }
     }
 }

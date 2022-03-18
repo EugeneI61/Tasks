@@ -2,7 +2,7 @@
 
 namespace Task6
 {
-    class InputCheck
+    public class InputCheck
     {
         public bool IsNumber(string input)
         {
@@ -19,15 +19,6 @@ namespace Task6
             {
                 return true;
             }
-            return false;
-        }
-        public bool IsNull(object number)
-        {
-            if (number == null)
-            {
-                return true;
-            }
-
             return false;
         }
     }

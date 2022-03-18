@@ -11,7 +11,7 @@ namespace Task6
 {
     public partial class Form1 : Form
     {
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -74,7 +74,7 @@ namespace Task6
                 MessageBox.Show("Fill the form!");
             }
         }
-        private void DeleteClick(object sender, System.EventArgs e)
+        public void DeleteClick(object sender, System.EventArgs e)
         {
             var delete = textBox4.Text;
             DbManager manager = new DbManager();
@@ -111,7 +111,7 @@ namespace Task6
             if (radioButton1.Checked)
             {
                 var employee = db.Employees
-                    .Select(p => new { p.Name, p.Age, p.Car, p.Id, p.RecordId })
+                    .Select(p => new { p.Id, p.Name, p.Age, p.Car, p.RecordId })
                     .OrderByDescending(p => p.Name);
 
                 dataGridView1.DataSource = employee.ToList();
@@ -120,7 +120,7 @@ namespace Task6
             {
 
                 var employee = db.Employees
-                    .Select(p => new { p.Name, p.Age, p.Car, p.Id, p.RecordId })
+                    .Select(p => new { p.Id,p.Name, p.Age, p.Car, p.RecordId })
                     .OrderBy(p => p.Name);
 
                 dataGridView1.DataSource = employee.ToList();
