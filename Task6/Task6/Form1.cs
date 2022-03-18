@@ -47,7 +47,7 @@ namespace Task6
 
                     if (checkin.AgeAccept(age) ? true : false)
                     {
-                        var recordId = string.Concat( name, age.ToString(), cars.ToString());
+                        var recordId = string.Concat(name, age.ToString(), cars.ToString());
 
                         if (config.Check())
                         {
@@ -65,7 +65,7 @@ namespace Task6
                 }
                 else
                 {
-                    MessageBox.Show("Incor5rect Name!");
+                    MessageBox.Show("Incorrect Name!");
                 }
             }
             catch
