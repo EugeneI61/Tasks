@@ -11,7 +11,6 @@ namespace Task6
 {
     public partial class Form1 : Form
     {
-
         public Form1()
         {
             InitializeComponent();
@@ -40,9 +39,9 @@ namespace Task6
 
                     var id = 1;
 
-                    InputCheck bl = new InputCheck();
+                    InputCheck check = new InputCheck();
 
-                    if (int.TryParse(resultAge, out var age) && bl.AgeAccept(age))
+                    if (int.TryParse(resultAge, out var age) && check.AgeAccept(age))
                     {
                         var recordId = string.Concat(id.ToString(), name, age.ToString(), cars.ToString());
 

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 using Task6.Models;
@@ -8,11 +7,9 @@ namespace Task6.Managers
 {
     public class DbManager
     {
-
-        EmployeeContext db = new EmployeeContext();
-
         public void Add(int id, string name, int age, Cars cars, string recordId)
         {
+            EmployeeContext db = new EmployeeContext();
 
             Employee emp = new Employee { Id = id, Name = name, Age = age, Car = cars, RecordId = recordId };
             db.Employees.Add(emp);
@@ -28,6 +25,7 @@ namespace Task6.Managers
         }
         public void Delete(string delete)
         {
+            EmployeeContext db = new EmployeeContext();
             try
             {
                 var deleteEmployee = db.Employees.Where(emp => emp.Name == delete).FirstOrDefault();
@@ -40,16 +38,6 @@ namespace Task6.Managers
             {
                 MessageBox.Show("Incorrect Input");
             }
-        }
-        public List<Employee> Read(List<Employee> employees)
-        {
-            employees = db.Employees.ToList();
-
-            return employees;
-        }
-        public void View(DataGridView dataGrid)
-        {
-            dataGrid.DataSource = db.Employees.ToList();
         }
     }
 }
