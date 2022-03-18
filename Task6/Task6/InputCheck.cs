@@ -1,25 +1,21 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace Task6
 {
     public class InputCheck
     {
-        public bool IsNumber(string input)
+        public bool AgeAccept(string age)
         {
-            foreach (char result in input)
-            {
-                if (Char.IsNumber(result))
-                    return true;
-            }
-            return false;
+            bool result = Int32.TryParse(age, out int valueResult) && (valueResult >= 18 && valueResult <= 99);
+
+            return result;
         }
-        public bool AgeAccept(int age)
+        public bool IsNull(string input)
         {
-            if (age >= 18 && age <= 99)
-            {
-                return true;
-            }
-            return false;
+            bool result = string.IsNullOrEmpty(input) ;
+
+            return result;
         }
     }
 }

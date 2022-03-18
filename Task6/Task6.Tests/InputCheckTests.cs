@@ -6,36 +6,43 @@ namespace Task6.Tests
     public class InputCheckTests
     {
         [TestMethod]
-        public void IsNumberTest()
+        [DataRow("")]
+        [DataRow(null)]
+        public void IsNull(string value)
         {
             InputCheck check = new InputCheck();
 
-            string input = "1231";
+            var results = check.IsNull(value);
 
-            string input2 = "ASkkj";
-
-            bool result = check.IsNumber(input);
-
-            bool result2 = check.IsNumber(input2);
-
-            Assert.IsTrue(result);
-
-            Assert.IsFalse(result2);
+            Assert.IsTrue(results);
         }
 
         [TestMethod]
-        public void AgeAcceptTest()
+        [DataRow("20")]
+        public void AgeAcceptTest(string value)
         {
             InputCheck check = new InputCheck();
 
-            int age = 12;
-            int age2 = 20;
+            var results = check.AgeAccept(value);
 
-            bool result = check.AgeAccept(age);
-            bool result2 = check.AgeAccept(age2);
+            Assert.IsTrue(results);
+        }
 
-            Assert.IsFalse(result);
-            Assert.IsTrue(result2);
+        [TestMethod]
+        [DataRow("100")]
+        [DataRow("0")]
+        [DataRow("-1")]
+        [DataRow(null)]
+        [DataRow("2")]
+        [DataRow("one")]
+        [DataRow("2 5")]
+        public void NotAgeAcceptTest(string value)
+        {
+            InputCheck check = new InputCheck();
+
+            var results = check.AgeAccept(value);
+
+            Assert.IsFalse(results);
         }
     }
 }

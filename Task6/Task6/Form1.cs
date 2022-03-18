@@ -27,31 +27,31 @@ namespace Task6
         }
         private void SaveButton(object sender, System.EventArgs e)
         {
+            DbManager manager = new DbManager();
+
+            Config config = new Config();
+
+            InputCheck checkin = new InputCheck();
+
             try
             {
                 string name = textBox1.Text;
 
-                if (name != "")
+                if (checkin.IsNull(name) ? false : true)
                 {
-                    var resultAge = textBox2.Text;
+                    string age = textBox2.Text;
 
                     var cars = (Cars)comboBox1.SelectedItem;
 
                     var id = 1;
 
-                    InputCheck check = new InputCheck();
-
-                    if (int.TryParse(resultAge, out var age) && check.AgeAccept(age))
+                    if (checkin.AgeAccept(age) ? true : false)
                     {
                         var recordId = string.Concat(id.ToString(), name, age.ToString(), cars.ToString());
 
-                        DbManager manager = new DbManager();
-
-                        Config config = new Config();
-
                         if (config.Check())
                         {
-                            manager.Add(id, name, age, cars, GetHash(recordId));
+                            manager.Add(id, name, Convert.ToInt32(age), cars, GetHash(recordId));
                         }
                         else
                         {
@@ -65,7 +65,7 @@ namespace Task6
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect Name!");
+                    MessageBox.Show("Incor5rect Name!");
                 }
             }
             catch
@@ -78,16 +78,8 @@ namespace Task6
             var delete = textBox4.Text;
             DbManager manager = new DbManager();
 
-            if (int.TryParse(delete, out var result))
-            {
-                MessageBox.Show("Input Name of Employee!");
-            }
-            else
-            {
-                manager.Delete(delete);
-            }
+            manager.Delete(delete);
         }
-
         private void FindButton(object sender, System.EventArgs e)
         {
             EmployeeContext db = new EmployeeContext();
@@ -117,11 +109,9 @@ namespace Task6
             }
             else if (radioButton2.Checked)
             {
-
                 var employee = db.Employees
-                    .Select(p => new { p.Id,p.Name, p.Age, p.Car, p.RecordId })
+                    .Select(p => new { p.Id, p.Name, p.Age, p.Car, p.RecordId })
                     .OrderBy(p => p.Name);
-
                 dataGridView1.DataSource = employee.ToList();
             }
         }
