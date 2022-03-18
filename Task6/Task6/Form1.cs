@@ -47,7 +47,7 @@ namespace Task6
 
                     if (checkin.AgeAccept(age) ? true : false)
                     {
-                        var recordId = string.Concat(id.ToString(), name, age.ToString(), cars.ToString());
+                        var recordId = string.Concat( name, age.ToString(), cars.ToString());
 
                         if (config.Check())
                         {
