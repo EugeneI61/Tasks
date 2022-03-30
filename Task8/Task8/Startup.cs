@@ -24,7 +24,16 @@ namespace Task8
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EmployeeContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CORSPolicy", services =>
+                {
+                    services
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("http://localhost:3000");
+                });
+            });
             services.AddControllers();
             services.AddMemoryCache();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -49,6 +58,8 @@ namespace Task8
             app.UseStaticFiles();
 
             app.UseHttpsRedirection();
+
+            app.UseCors("CORSPolicy");
             app.UseRouting();
 
             app.UseAuthorization();

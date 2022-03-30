@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import EmployeeAddForm from "./EmployeeAdd";
 
-export default function () {
+export default function App() {
 
   const [employee, setEmployee] = useState([]);
   const [showAddNewEmployeeForm, setShowAddNewEmployeeForm] = useState(false);
-
 
   function getEmployees() {
     const url = 'https://localhost:44310/api/employees';
@@ -78,7 +77,7 @@ export default function () {
       </div>
     );
   }
-  
+
   function onEmployeeAdded(addedEmployee) {
 
     setShowAddNewEmployeeForm(false);

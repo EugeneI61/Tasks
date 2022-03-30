@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 
 export default function EmployeeAddForm(props) {
     const initialFormData = Object.freeze({
-        employeeName: "Eugene",
+        employeeName: "",
         employeeAge: 20,
         car: 3,
         recordId: ""
     });
 
     const [formData, setFormData] = useState(initialFormData);
-
-
-
+    
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -30,8 +28,7 @@ export default function EmployeeAddForm(props) {
             recordId: formData.recordId
         };
 
-
-        const url = 'https://localhost:44310/api/employees';
+        const url = "https://localhost:44310/api/employees";
 
         fetch(url, {
             method: 'POST',
@@ -43,20 +40,20 @@ export default function EmployeeAddForm(props) {
             .then(response => response.json())
             .then(responseFromServer => {
                 console.log(responseFromServer);
+                console.log(employeeToAdd)
             })
             .catch((error) => {
                 console.log(error);
-                alert(error);
+                alert(error); 
             });
 
-        props.OnEmployeeAdded(employeeToAdd);
+        props.onEmployeeAdded(employeeToAdd);
     };
 
     return (
         <div>
             <form className='w-100 px-5'>
                 <h1 className='mt-5'>Add new Employee</h1>
-
                 <div className='mt-5'>
                     <label className='h3 form-label'>Input Name</label>
                     <input value={formData.employeeName} name="employeeName" type="text" className='form-control' onChange={handleChange} />
@@ -67,7 +64,15 @@ export default function EmployeeAddForm(props) {
                 </div>
                 <div className='mt-5'>
                     <label className='h3 form-label'>Choise Car</label>
-                    <input value={formData.car} name="car" type="number" className='form-control' onChange={handleChange} />
+                    <div className="col-md-4">
+                        <select value={formData.car} type="number" name="car" className='form-control' onChange={handleChange} >
+                            <option value="1">Bmw</option>
+                            <option value="2">Skoda</option>
+                            <option value="3">Toyota</option>
+                            <option value="4">Mazda</option>
+                            <option value="5">Volkswagen</option>
+                        </select>
+                    </div>
                 </div>
                 <div className='mt-5'>
                     <label className='h3 form-label'>uu</label>

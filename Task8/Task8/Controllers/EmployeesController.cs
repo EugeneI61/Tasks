@@ -22,6 +22,7 @@ namespace Task8.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
+
             return await _context.Employees.ToListAsync();
         }
 

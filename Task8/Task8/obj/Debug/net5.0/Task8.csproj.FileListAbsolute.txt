@@ -150,8 +150,6 @@ D:\Tasks\Tasks\Task8\Task8\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Works
 D:\Tasks\Tasks\Task8\Task8\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\Tasks\Tasks\Task8\Task8\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\Tasks\Tasks\Task8\Task8\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
-D:\Tasks\Tasks\Task8\Task8\bin\Debug\net5.0\package-lock.json
-D:\Tasks\Tasks\Task8\Task8\bin\Debug\net5.0\package.json
 C:\Users\User\Desktop\Task8\Task8\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\User\Desktop\Task8\Task8\bin\Debug\net5.0\appsettings.json
 C:\Users\User\Desktop\Task8\Task8\bin\Debug\net5.0\Task8.exe

@@ -8191,11 +8191,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Task8\\Task8\\Task8.csproj",
+      "projectUniqueName": "D:\\Tasks\\Tasks\\Task8\\Task8\\Task8.csproj",
       "projectName": "Task8",
-      "projectPath": "C:\\Users\\User\\Desktop\\Task8\\Task8\\Task8.csproj",
+      "projectPath": "D:\\Tasks\\Tasks\\Task8\\Task8\\Task8.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Task8\\Task8\\obj\\",
+      "outputPath": "D:\\Tasks\\Tasks\\Task8\\Task8\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
