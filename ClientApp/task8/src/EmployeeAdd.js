@@ -5,7 +5,6 @@ export default function EmployeeAddForm(props) {
         employeeName: "",
         employeeAge: 20,
         car: 3,
-        recordId: ""
     });
 
     const [formData, setFormData] = useState(initialFormData);
@@ -16,6 +15,18 @@ export default function EmployeeAddForm(props) {
             [e.target.name]: e.target.value,
         });
     };
+    
+
+    String.prototype.hashCode = function() {
+        var hash = 0;
+        for (var i = 0; i < this.length; i++) {
+            var char = this.charCodeAt(i);
+            hash = ((hash<<5)-hash)+char;
+            hash = hash & hash;
+        }
+        return hash;
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,8 +35,8 @@ export default function EmployeeAddForm(props) {
             employeeId: 0,
             employeeName: formData.employeeName,
             employeeAge: formData.employeeAge,
-            car: formData.car,
-            recordId: formData.recordId
+            car: Number.parseInt(formData.car),
+            recordId: (formData.employeeName + formData.employeeAge + Number.parseInt(formData.car)).hashCode().toString()
         };
 
         const url = "https://localhost:44310/api/employees";
@@ -66,18 +77,14 @@ export default function EmployeeAddForm(props) {
                     <label className='h3 form-label'>Choise Car</label>
                     <div className="col-md-4">
                         <select value={formData.car} type="number" name="car" className='form-control' onChange={handleChange} >
-                            <option value="1">Bmw</option>
-                            <option value="2">Skoda</option>
-                            <option value="3">Toyota</option>
-                            <option value="4">Mazda</option>
-                            <option value="5">Volkswagen</option>
+                            <option value='1'>Bmw</option>
+                            <option value='2'>Skoda</option>
+                            <option value='3'>Toyota</option>
+                            <option value='4'>Mazda</option>
+                            <option value='5'>Volkswagen</option>
                         </select>
                     </div>
-                </div>
-                <div className='mt-5'>
-                    <label className='h3 form-label'>uu</label>
-                    <input value={formData.recordId} name="recordId" type="text" className='form-control' onChange={handleChange} />
-                </div>
+                </div>               
                 <button onClick={handleSubmit} className='btn btn-dark btn-lg w-100 mt-5'>Submit</button>
                 <button onClick={() => props.OnEmployeeAdded(null)} className='btn btn-secondary btn-lg w-100 mt-3'>Cancel</button>
             </form>

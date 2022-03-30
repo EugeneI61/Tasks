@@ -6,6 +6,17 @@ export default function App() {
   const [employee, setEmployee] = useState([]);
   const [showAddNewEmployeeForm, setShowAddNewEmployeeForm] = useState(false);
 
+  var deleteId; 
+
+  const handleChange = (e) => {
+    deleteId = e.target.value;
+  };
+
+  const handleSubmit = (e) => {
+    deleteEmployee(deleteId);
+  }
+
+
   function getEmployees() {
     const url = 'https://localhost:44310/api/employees';
 
@@ -23,6 +34,24 @@ export default function App() {
       });
   }
 
+  function deleteEmployee(deleteId) {
+
+    const url = 'https://localhost:44310/api/employees/' + deleteId;
+
+    fetch(url, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(responseFromServer => {
+        console.log(responseFromServer);
+        onEmployeeDeleted();
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error);
+      });
+  }
+
   return (
     <div className="container">
       <div className="row min-vh-100">
@@ -33,19 +62,20 @@ export default function App() {
               <h1>Task8</h1>
               <div className="mt-5">
                 <button onClick={getEmployees} className="btn btn-dark btn-lg w-100">Get Employees from Server</button>
-                <button onClick={() => setShowAddNewEmployeeForm(true)} className="btn btn-secondary btn-lg w-100 mt-4">Add New Employee</button>
+
               </div>
             </div>
           )}
+          {(showAddNewEmployeeForm && employee.length > 5) && Overflow()}
 
           {(employee.length > 0 && showAddNewEmployeeForm === false) && renderTable()}
 
           {showAddNewEmployeeForm && <EmployeeAddForm onEmployeeAdded={onEmployeeAdded} />}
+
         </div>
       </div>
     </div>
   );
-
 
   function renderTable() {
     return (
@@ -72,8 +102,15 @@ export default function App() {
             ))}
           </tbody>
         </table>
+        <button onClick={() => setShowAddNewEmployeeForm(true)} className="btn btn-secondary btn-lg w-100 mt-4">Add New Employee</button>
+        <button onClick={() => setEmployee([])} className="btn btn-secondary btn-lg w-100 mt-4">Empty React Array</button>
 
-        <button onClick={() => setEmployee([])} className="btn btn-secondary btn-lg w-100">Empty React Array</button>
+        <div className='mt-4'>
+          <label className='h3 form-label'>Input Id for delete!</label>
+          <input value={deleteId} name="deleteId" type="number" className='form-control' onChange={handleChange} />
+          <button onClick={handleSubmit} className="btn btn-secondary btn-lg w-100 mt-4">Delete Employee</button>
+        </div>
+
       </div>
     );
   }
@@ -89,5 +126,14 @@ export default function App() {
     alert("Post Success!");
 
     getEmployees();
+  }
+
+  function Overflow() {
+    setShowAddNewEmployeeForm(false);
+
+    alert("Data is Overflow!");
+  }
+  function onEmployeeDeleted() {
+    alert("Employee successfully deleted!");
   }
 }
