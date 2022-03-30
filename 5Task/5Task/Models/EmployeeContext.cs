@@ -6,7 +6,7 @@ namespace Task5
     public class EmployeeContext : DbContext
     {
         public EmployeeContext() :
-            base("EmployeesDB")
+            base("EmployeeDB")
         { }
         public DbSet<Employee> Employees { get; set; }
     }
