@@ -70,7 +70,7 @@ namespace Task5
 
             foreach (Employee emp in db.Employees)
             {
-                dataGridView1.Rows.Add(0, emp.EmployeeName, emp.Age, emp.Car);
+                dataGridView1.Rows.Add( emp.EmployeeName, emp.Age, emp.Car);
             }
 
         }

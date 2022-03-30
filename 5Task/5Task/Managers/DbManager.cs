@@ -10,9 +10,9 @@ namespace Task5.Managers
     public class DbManager
     {
         EmployeeContext db = new EmployeeContext();
-        public void Add(string name, int age, string car)
+        public void Add( string name, int age, string car)
         {
-            Employee emp = new Employee { EmployeeName = name, Age = age, Car = car };
+            Employee emp = new Employee { EmployeeName = name, Age = age, Car = car};
             db.Employees.Add(emp);
             db.SaveChanges();
             db.Entry(emp).State = EntityState.Detached;
@@ -26,7 +26,6 @@ namespace Task5.Managers
             if (find == null)
             {
                 MessageBox.Show("Incorrect Input");
-
             }
             else
             {
