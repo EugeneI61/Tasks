@@ -1,36 +1,42 @@
 import React, { useState } from 'react'
 
 export default function EmployeeAddForm(props) {
+
     const initialFormData = Object.freeze({
         employeeName: "",
-        employeeAge: 20,
+        employeeAge: "",
         car: 3,
     });
 
     const [formData, setFormData] = useState(initialFormData);
-    
+
+    function validateAge(employeeAge) {
+        if(employeeAge >= 18)
+        {
+
+        }
+    }
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
     };
-    
 
-    String.prototype.hashCode = function() {
+    // eslint-disable-next-line no-extend-native
+    String.prototype.hashCode = function () {
         var hash = 0;
         for (var i = 0; i < this.length; i++) {
             var char = this.charCodeAt(i);
-            hash = ((hash<<5)-hash)+char;
+            hash = ((hash << 5) - hash) + char;
             hash = hash & hash;
         }
         return hash;
     }
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const employeeToAdd = {
             employeeId: 0,
             employeeName: formData.employeeName,
@@ -55,7 +61,7 @@ export default function EmployeeAddForm(props) {
             })
             .catch((error) => {
                 console.log(error);
-                alert(error); 
+                alert(error);
             });
 
         props.onEmployeeAdded(employeeToAdd);
@@ -84,7 +90,7 @@ export default function EmployeeAddForm(props) {
                             <option value='5'>Volkswagen</option>
                         </select>
                     </div>
-                </div>               
+                </div>
                 <button onClick={handleSubmit} className='btn btn-dark btn-lg w-100 mt-5'>Submit</button>
                 <button onClick={() => props.OnEmployeeAdded(null)} className='btn btn-secondary btn-lg w-100 mt-3'>Cancel</button>
             </form>

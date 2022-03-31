@@ -23,11 +23,14 @@ namespace Task8.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            Employee employee = new Employee();
+            var employees = _context.Employees.ToList();
 
+            //Enum car = Cars.Bmw;
 
+            //employees.Where(x =>
+            //    x.Car == Cars.Bmw).ToList().ForEach(y => y.Car = Cars.Volkswagen);
 
-            return await _context.Employees.ToListAsync();
+            return employees;
         }
 
         // GET: api/Employees/5
