@@ -57,7 +57,7 @@ export default function App() {
         alert(error);
       });
   }
-
+//https://abcinblog.blogspot.com/2019/02/react-i.html
   function deleteEmployee(deleteId) {
 
     const url = 'https://localhost:44310/api/employees/' + Number.parseInt(deleteId);

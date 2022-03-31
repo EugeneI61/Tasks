@@ -10,13 +10,6 @@ export default function EmployeeAddForm(props) {
 
     const [formData, setFormData] = useState(initialFormData);
 
-    function validateAge(employeeAge) {
-        if(employeeAge >= 18)
-        {
-
-        }
-    }
-
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -37,6 +30,7 @@ export default function EmployeeAddForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const employeeToAdd = {
             employeeId: 0,
             employeeName: formData.employeeName,
@@ -77,7 +71,7 @@ export default function EmployeeAddForm(props) {
                 </div>
                 <div className='mt-4'>
                     <label className='h3 form-label'>Input Age</label>
-                    <input value={formData.employeeAge} name="employeeAge" type="number" className='form-control' onChange={handleChange} />
+                    <input value={formData.employeeAge} name="employeeAge" min={18} max={99} step={10} type="number" className='form-control' onChange={handleChange} />
                 </div>
                 <div className='mt-5'>
                     <label className='h3 form-label'>Choise Car</label>
@@ -95,5 +89,7 @@ export default function EmployeeAddForm(props) {
                 <button onClick={() => props.OnEmployeeAdded(null)} className='btn btn-secondary btn-lg w-100 mt-3'>Cancel</button>
             </form>
         </div>
+
+        
     )
 }
