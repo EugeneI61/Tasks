@@ -89,7 +89,5 @@ export default function EmployeeAddForm(props) {
                 <button onClick={() => props.OnEmployeeAdded(null)} className='btn btn-secondary btn-lg w-100 mt-3'>Cancel</button>
             </form>
         </div>
-
-        
     )
 }
