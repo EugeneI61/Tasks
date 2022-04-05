@@ -29,27 +29,6 @@ class App extends Component {
     })
   }
 
-  GetCar() {
-    let a =1;
-    switch (a) {
-      case 1:
-        return "Bmw";
-        break
-      case 2:
-        return "Scoda";
-        break
-      case 3:
-        return "Toyota";
-        break
-      case 4:
-        return "Mazda";
-        break
-      case 5:
-        return "Volkswagen";
-        break
-    }
-  }
-
   searchHandler = search => (
     this.setState({ search })
   )
@@ -70,7 +49,6 @@ class App extends Component {
   render() {
     const pageSize = 50;
     const filteredData = this.getFilteredData()
-    const getCar = this.GetCar()
 
     const displayData = _.chunk(filteredData, pageSize)[this.state.currentPage]
 
@@ -89,7 +67,6 @@ class App extends Component {
                 </div>
                 <TableSearch onSearch={this.searchHandler} />
                 <Table
-                  car={getCar}
                   data={displayData}
                   onSort={this.onSort}
                   sort={this.state.sort}
@@ -116,7 +93,6 @@ class App extends Component {
         item["employeeAge"].toString().toLowerCase().includes(search.toLowerCase()) ||
         item["car"].toString().toLowerCase().includes(search.toLowerCase()) ||
         item["recordId"].toString().toLowerCase().includes(search.toLowerCase())
-
       );
     });
     if (!result.length) {
