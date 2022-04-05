@@ -28,13 +28,10 @@ export default props => (
     < table className="table" >
         <thead>
             <tr>
-                <th onClick={props.onSort.bind(null, 'employeeid')} >
-                    Id
-                    {props.sortField === 'employeeId' ? <small>{props.sort}</small> : null}
-                </th>
+                <th onClick={props.onSort.bind(null, 'employeeid')} >Id
+                    {props.sortField === 'employeeId' ? <small>{props.sort}</small> : null}</th>
                 <th onClick={props.onSort.bind(null, 'employeeName')}>EmployeeName
-                    {props.sortField === 'employeeName' ? <small>{props.sort}</small> : null}
-                </th>
+                    {props.sortField === 'employeeName' ? <small>{props.sort}</small> : null}</th>
                 <th onClick={props.onSort.bind(null, 'employeeAge')}>EmployeeAge
                     {props.sortField === 'employeeAge' ? <small>{props.sort}</small> : null}</th>
                 <th onClick={props.onSort.bind(null, 'car')}>Car
