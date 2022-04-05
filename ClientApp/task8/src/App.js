@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Loader from './Loader/Loader';
 import Table from './Table/Table';
-import _ from 'lodash';
+import _, { get } from 'lodash';
 import TableSearch from './TableSearch/TableSearch';
 import EmployeeAddForm from './EmployeeAdd/EmployeeAdd';
 import DeleteEmployeeForm from './DeleteEmployee/DeleteEmployee';
@@ -28,6 +28,28 @@ class App extends Component {
       data: _.orderBy(data, this.state.sortField, this.state.sort)
     })
   }
+
+  GetCar() {
+    let a =1;
+    switch (a) {
+      case 1:
+        return "Bmw";
+        break
+      case 2:
+        return "Scoda";
+        break
+      case 3:
+        return "Toyota";
+        break
+      case 4:
+        return "Mazda";
+        break
+      case 5:
+        return "Volkswagen";
+        break
+    }
+  }
+
   searchHandler = search => (
     this.setState({ search })
   )
@@ -48,6 +70,7 @@ class App extends Component {
   render() {
     const pageSize = 50;
     const filteredData = this.getFilteredData()
+    const getCar = this.GetCar()
 
     const displayData = _.chunk(filteredData, pageSize)[this.state.currentPage]
 
@@ -57,16 +80,23 @@ class App extends Component {
           this.state.isLoading
             ? <Loader />
             : <React.Fragment>
-              <EmployeeAddForm />
-              <DeleteEmployeeForm/>
-              <TableSearch onSearch={this.searchHandler} />
-              <Table
-                data={displayData}
-                onSort={this.onSort}
-                sort={this.state.sort}
-                sortField={this.state.sortField}
-                forcePage={this.state.currentPage}
-              />
+              <div className="flex-row">
+                <div className="flex-large">
+                  <EmployeeAddForm />
+                </div>
+                <div className="flex-large">
+                  <DeleteEmployeeForm />
+                </div>
+                <TableSearch onSearch={this.searchHandler} />
+                <Table
+                  car={getCar}
+                  data={displayData}
+                  onSort={this.onSort}
+                  sort={this.state.sort}
+                  sortField={this.state.sortField}
+                  forcePage={this.state.currentPage}
+                />
+              </div>
             </React.Fragment>
         }
       </div>
@@ -86,6 +116,7 @@ class App extends Component {
         item["employeeAge"].toString().toLowerCase().includes(search.toLowerCase()) ||
         item["car"].toString().toLowerCase().includes(search.toLowerCase()) ||
         item["recordId"].toString().toLowerCase().includes(search.toLowerCase())
+
       );
     });
     if (!result.length) {

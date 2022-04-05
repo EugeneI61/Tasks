@@ -25,10 +25,10 @@ namespace Task8.Controllers
         {
             var employees = _context.Employees.ToList();
 
-            //Enum car = Cars.Bmw;
+            //Cars car1 = Cars.Bmw;
 
             //employees.Where(x =>
-            //    x.Car == Cars.Bmw).ToList().ForEach(y => y.Car = Cars.Volkswagen);
+            //    x.Car == Cars.Bmw).ToList().ForEach(y => y.Car = car1.ToString());
 
             return employees;
         }

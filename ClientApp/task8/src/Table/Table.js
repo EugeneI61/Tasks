@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import App from '../App';
 
-// eslint-disable-next-line import/no-anonymous-default-export
+//eslint-disable-next-line import/no-anonymous-default-export
+
 export default props => (
-    <table className="table">
+
+    < table className="table" >
         <thead>
             <tr>
                 <th onClick={props.onSort.bind(null, 'employeeid')} >
-                    Id 
-                {props.sortField === 'employeeId' ? <small>{props.sort}</small> : null}
+                    Id
+                    {props.sortField === 'employeeId' ? <small>{props.sort}</small> : null}
                 </th>
                 <th onClick={props.onSort.bind(null, 'employeeName')}>EmployeeName
-                {props.sortField === 'employeeName' ? <small>{props.sort}</small> : null}
+                    {props.sortField === 'employeeName' ? <small>{props.sort}</small> : null}
                 </th>
                 <th onClick={props.onSort.bind(null, 'employeeAge')}>EmployeeAge
-                {props.sortField === 'employeeAge' ? <small>{props.sort}</small> : null}</th>
+                    {props.sortField === 'employeeAge' ? <small>{props.sort}</small> : null}</th>
                 <th onClick={props.onSort.bind(null, 'car')}>Car
-                {props.sortField === 'car' ? <small>{props.sort}</small> : null}</th>
+                    {props.sortField === 'car' ? <small>{props.sort}</small> : null}</th>
                 <th onClick={props.onSort.bind(null, 'recordId')}>RecordId
-                {props.sortField === 'recordId' ? <small>{props.sort}</small> : null}</th>
+                    {props.sortField === 'recordId' ? <small>{props.sort}</small> : null}</th>
             </tr>
         </thead>
         <tbody>
@@ -31,5 +34,5 @@ export default props => (
                 </tr>
             ))}
         </tbody>
-    </table>
+    </table >
 )

@@ -3,15 +3,13 @@ import React, { useState } from 'react'
 const EmployeeAddForm = props => {
 
     const initialFormData = Object.freeze({
-        employeeName: "",
-        employeeAge: "",
+        employeeAge: '',
+        employeeName: '',
         car: 3,
-        ageValid: false,
-        nameValid: false,
-        formValid: false
-
     });
     const [formData, setFormData] = useState(initialFormData);
+
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -30,7 +28,8 @@ const EmployeeAddForm = props => {
         return hash;
     }
 
-    const handleSubmit = (e) => {
+    function addEmployee(e) {
+
         e.preventDefault();
 
         const employeeToAdd = {
@@ -54,30 +53,42 @@ const EmployeeAddForm = props => {
             .then(responseFromServer => {
                 console.log(responseFromServer);
                 console.log(employeeToAdd)
-                alert("Employee was Add!")
             })
             .catch((error) => {
                 console.log(error);
                 alert(error);
             });
+    }
 
-        props.onEmployeeAdded(employeeToAdd);
+    const handleSubmit = (e) => {
+        if (formData.employeeName !== "") {
+            if (formData.employeeAge < 18 || formData.employeeAge > 99) {
+                alert('Age must be in range 18 - 99')
+            } else {
+                alert("Employee was Add!");
+                addEmployee(e);
+            }
+        } else {
+            alert("Input Name!")
+        }
     };
 
     return (
         <form className='w-50 px-5'>
             <h1 className='mt-5'>Add new Employee</h1>
             <div className='mt-5'>
+
                 <label className='h3 form-label'>Input Name</label>
                 <input value={formData.employeeName} name="employeeName" type="text" className='form-control' onChange={handleChange} />
             </div>
             <div className='mt-4'>
+
                 <label className='h3 form-label'>Input Age</label>
-                <input value={formData.employeeAge} name="employeeAge" min={18} max={99} step={1} type="number" className='form-control' onChange={handleChange} />
+                <input value={formData.employeeAge} name="employeeAge" type="number" className='form-control' onChange={handleChange} />
             </div>
             <div className='mt-4'>
                 <label className='h3 form-label'>Choise Car</label>
-                <select value={formData.car} type="number" name="car" className='form-control' onChange={handleChange} >
+                <select value={formData.car} type="number" name="car" className='form-control' onChange={handleChange}>
                     <option value='1'>Bmw</option>
                     <option value='2'>Skoda</option>
                     <option value='3'>Toyota</option>
