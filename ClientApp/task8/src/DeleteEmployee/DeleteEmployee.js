@@ -14,7 +14,7 @@ const DeleteEmployeeForm = props => {
       .then(response => response.json())
       .then(responseFromServer => {
         console.log(responseFromServer);
-        
+        alert("Employee was Delete!");
       })
       .catch((error) => {
         console.log(error);
@@ -24,7 +24,6 @@ const DeleteEmployeeForm = props => {
     deleteId = e.target.value;
   };
   const handleSubmit = (e) => {
-    alert("Employee was Delete!");
     deleteEmployee(deleteId);
   }
     return (

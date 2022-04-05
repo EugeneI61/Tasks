@@ -6,6 +6,29 @@ import TableSearch from './TableSearch/TableSearch';
 import EmployeeAddForm from './EmployeeAdd/EmployeeAdd';
 import DeleteEmployeeForm from './DeleteEmployee/DeleteEmployee';
 
+function getCar(a) {
+  switch (a) {
+    case 1:
+      return "Bmw"
+      break
+    case 2:
+      return "Scoda"
+      break
+    case 3:
+      return "Toyota"
+      break
+    case 4:
+      return "Mazda"
+      break
+    case 5:
+      return "Volkswagen"
+      break
+
+  }
+}
+
+
+
 class App extends Component {
 
   state = {
@@ -46,10 +69,10 @@ class App extends Component {
     })
   }
 
+  
   render() {
     const pageSize = 50;
     const filteredData = this.getFilteredData()
-
     const displayData = _.chunk(filteredData, pageSize)[this.state.currentPage]
 
     return (
